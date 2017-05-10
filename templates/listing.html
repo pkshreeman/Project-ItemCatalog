@@ -1,0 +1,65 @@
+{% extends 'welcome.html' %}
+
+{% block category %}
+<a class="button btn btn-default" href="{{url_for('addlisting')}}">
+  Add New Category
+</a>
+<div class='row'>
+</div>
+<br>
+
+{% for list in lists %}
+<div class = 'row'>
+<div class='col-md-3'>
+<a class = "button btn btn-default" href='{{url_for("showitems", list_id = list.id)}}'>
+{{list.name}}
+</a>
+</div>
+<div class='col-md-2'>
+<a class = "btn button btn-info" href='{{url_for("editlist", list_id = list.id)}}'>
+  Edit </a>
+</div>
+<div class='col-md-1'>
+<a class = "btn button btn-danger" href='{{url_for("deletelist", list_id = list.id)}}'>
+    Delete </a>
+</div>
+</div>
+<br>
+{% endfor %}
+{% endblock %}
+
+{% block items %}
+<div class = 'col-md-6'>
+<a class="button btn btn-default" href="{{url_for('newitems', list_id=currentlist.id)}}">
+  Add New Item for {{currentlist.name}}
+</a>
+<div class ='row'>
+</div>
+<br>
+{% if items %}
+{% for item in items %}
+<div class ='row'>
+  <div class = 'col-md-4'>
+{{item.name}}
+<br>
+{{item.description}}
+<br>
+{{item.price}}
+<br>
+<img class="profilepic" src="{{item.picture}}">
+<br>
+</div>
+<div class='col-md-2'>
+<a class = "btn button btn-info" href='{{url_for("edititem", list_id = currentlist.id, item_id=item.id)}}'>
+  Edit </a>
+</div>
+<div class='col-md-1'>
+<a class = "btn button btn-danger" href='{{url_for("deleteitem", list_id = currentlist.id, item_id=item.id)}}'>
+    Delete </a>
+</div>
+</div>
+{% endfor%}
+
+{% endif %}
+</div>
+{% endblock%}

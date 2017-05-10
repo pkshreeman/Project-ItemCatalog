@@ -1,0 +1,27 @@
+{% include 'welcome.html' %}
+
+<h2> New item for the category of {{currentlist.name}}</h2>
+
+<form method="post" action="#">
+  <label>
+    Name of item
+  <input type ="text" name="name">
+</label>
+<br>
+<label>
+  Description of item
+<input type ="text" name="description">
+</label>
+<br>
+<label>
+  Price of the item
+<input type ="text" name="price" >
+</label>
+<br>
+<label>
+  Url of picture
+<input type ="text" name="picture">
+</label>
+<button type="submit" class="btn btn-default" type="submit">
+  Create </button>
+</form>

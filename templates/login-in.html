@@ -1,0 +1,26 @@
+{% include 'headers.html' %}
+<hmtl>
+  <body>
+<br>
+<br>
+
+<h1> Please Login </h1>
+<br>
+{{error}}
+<br>
+    <form method="post">
+      <label>
+    Please enter your email address
+    <input type="text" name="email" value="{{email}}">
+    {{error_email}}
+    </label>
+    <br>
+      Please verify your password
+      <input type="password" name="password" value="{{password}}">
+      {{error_password}}
+    </label>
+        <br>
+        <input type="submit">
+    </form>
+  </body>
+</html>

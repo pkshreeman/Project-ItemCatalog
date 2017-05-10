@@ -1,0 +1,44 @@
+{% include 'headers.html' %}
+
+{% if not name %}
+{% include 'login.html' %}
+{% endif %}
+
+<div class = 'container-fluid'>
+  <div class = 'row'>
+  <div class = 'col-md-3'>
+    {% if picture %}
+    <img class = "img-circle profilepic" src="{{picture}}">
+    {% endif %}
+  </div>
+  <div class ='col-md-3'>
+Welcome <br>
+{% if name %}
+{{name}}!
+{% else %}
+Guest!
+{% endif %}
+</div>
+<div class = 'col-md-3'>
+</div>
+  <div class = 'col-md-3'>
+    {% if name %}
+<a href="{{ url_for('logout') }}"/>Log {{name}} out </a>
+  {% endif %}
+</div>
+</div>
+</div>
+
+
+<div class = 'container'>
+  <div class = 'row'>
+  <div class = 'col-md-5'>
+{% block category %}
+{% endblock %}
+</div>
+<div class = 'col-6'>
+  {% block items %}
+  {% endblock %}
+</div>
+</div>
+</div>
