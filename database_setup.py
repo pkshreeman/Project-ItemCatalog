@@ -1,6 +1,6 @@
 from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, backref
 from sqlalchemy import create_engine
 from sqlalchemy_utils import create_database, database_exists # noqa
 
@@ -63,7 +63,7 @@ class Items(Base):
     users_id = Column(Integer, ForeignKey('users.id'))
     users = relationship(Users)
     category_id = Column(Integer, ForeignKey('category.id'))
-    category = relationship(Category)
+    category = relationship(Category, backref=backref('item',cascade='all, delete')) # noqa
 
     @property
     def serialize(self):
