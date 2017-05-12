@@ -15,7 +15,15 @@ DBSession = sessionmaker(bind=engine)
 # revert all of them back to the last commit by calling
 # session.rollback()
 session = DBSession()
+#Users
 
+user1 = Users(name = 'test1', email = 'test1@test.com', password = 'test')
+user2 = Users(name = 'test2', email = 'test2@test.com', password = 'test')
+user3 = Users(name = 'test3', email = 'test3@test.com', password = 'test')
+session.add(user1)
+session.add(user2)
+session.add(user3)
+session.commit()
 
 #Items
 
@@ -27,9 +35,9 @@ item1 = Items(name='iPhone7', description="awesomeness in a handsized package",
 item2 = Items(name="Samsung9", description="awesomeness in a unboxed package",
             price="$900.00", picture='https://c1.staticflickr.com/2/1585/24387900439_f3a89d9efb_b.jpg',
             users_id=1, category=cat1)
-# session.add(cat1)
-# session.add(item1)
-# session.add(item2)
+session.add(cat1)
+session.add(item1)
+session.add(item2)
 cat2 = Category(name="Computers", users_id=2)
 item3 = Items(name = 'Macbook Pro', description='awesomeness in a bigger box',
              price='$4,000', picture='https://static.pexels.com/photos/18104/pexels-photo.jpg',
